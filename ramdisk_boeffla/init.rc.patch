@@ -1,0 +1,39 @@
+From 2233d920c0042c06e34176211c0dc188f81c8b87 Mon Sep 17 00:00:00 2001
+From: andip71 <andreasp@gmx.de>
+Date: Thu, 19 Feb 2015 15:09:10 +0100
+Subject: [PATCH] jetzt
+
+---
+ init.rc | 11 +++++++++--
+ 1 file changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/init.rc b/init.rc
+index 580ff51..4f6782c 100755
+--- a/init.rc
++++ b/init.rc
+@@ -486,9 +486,9 @@ on boot
+     write /proc/sys/vm/overcommit_memory 1
+     write /proc/sys/vm/min_free_order_shift 4
+     chown root system /sys/module/lowmemorykiller/parameters/adj
+-    chmod 0220 /sys/module/lowmemorykiller/parameters/adj
++    chmod 0660 /sys/module/lowmemorykiller/parameters/adj
+     chown root system /sys/module/lowmemorykiller/parameters/minfree
+-    chmod 0220 /sys/module/lowmemorykiller/parameters/minfree
++    chmod 0660 /sys/module/lowmemorykiller/parameters/minfree
+ 
+     # Tweak background writeout
+     write /proc/sys/vm/dirty_expire_centisecs 200
+@@ -1363,3 +1363,10 @@ service post-init /sbin/post-init.sh
+     class core
+     user root
+     oneshot
++
++# Call Boeffla-Kernel init script
++service boeffla-init /sbin/boeffla-init.sh
++    class main
++    user root
++    group root
++    oneshot
+-- 
+1.9.1
+

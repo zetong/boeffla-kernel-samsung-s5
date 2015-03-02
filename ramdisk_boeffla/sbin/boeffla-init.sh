@@ -25,6 +25,7 @@
 	INITD_ENABLER="/data/.boeffla/enable-initd"
 	BUSYBOX_ENABLER="/data/.boeffla/enable-busybox"
 	FRANDOM_ENABLER="/data/.boeffla/enable-frandom"
+	PERMISSIVE_ENABLER="/data/.boeffla/enable-permissive"
 
 # If not yet existing, create a boeffla-kernel-data folder on sdcard 
 # which is used for many purposes,
@@ -245,8 +246,18 @@
 	pm disable com.samsung.knox.rcp.components	
 	pm disable com.samsung.android.securitylogagent
 
-# Set SELinux to permissive
-#	setenforce 0
+# If not explicitely configured to permissive, set SELinux to enforcing and restart mpdecision
+	if [ ! -f $PERMISSIVE_ENABLER ]; then
+		echo "1" > /sys/fs/selinux/enforce
+
+		stop mpdecision
+		/sbin/busybox sleep 0.5
+		start mpdecision
+
+		echo $(date) "SELinux: enforcing" >> $BOEFFLA_LOGFILE
+	else
+		echo $(date) "SELinux: permissive" >> $BOEFFLA_LOGFILE
+	fi
 
 # Finished
 	echo $(date) Boeffla-Kernel initialisation completed >> $BOEFFLA_LOGFILE

@@ -153,6 +153,7 @@
 	cat /sys/class/kgsl/kgsl-3d0/devfreq/governor > /dev/bk_orig_gpu_governor
 	cat /sys/class/kgsl/kgsl-3d0/min_pwrlevel > /dev/bk_orig_min_pwrlevel
 	cat /sys/class/kgsl/kgsl-3d0/max_pwrlevel > /dev/bk_orig_max_pwrlevel
+	cat /proc/sys/vm/swappiness > /dev/bk_orig_swappiness
 
 	# if there is a startconfig placed by Boeffla-Config V2 app, execute it
 	if [ -f $BOEFFLA_STARTCONFIG ]; then

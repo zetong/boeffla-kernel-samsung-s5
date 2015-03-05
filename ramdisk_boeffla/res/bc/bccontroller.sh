@@ -362,7 +362,9 @@ fi
 
 if [ "param_zram" == "$1" ]; then
 	# zRam size min/max/steps
-	echo "104857600;838860800;20971520"
+	echo "104857600;838860800;20971520;"
+	# swappiness max value
+	echo "200"
 	exit 0
 fi
 
@@ -979,7 +981,7 @@ if [ "apply_system_tweaks" == "$1" ]; then
 		echo "20" > /proc/sys/vm/dirty_ratio
 		echo "500" > /proc/sys/vm/dirty_writeback_centisecs
 		echo "3008" > /proc/sys/vm/min_free_kbytes
-		echo "60" > /proc/sys/vm/swappiness
+		echo "130" > /proc/sys/vm/swappiness
 		echo "100" > /proc/sys/vm/vfs_cache_pressure
 		echo "0" > /proc/sys/vm/drop_caches
 		busybox sleep 0.5s
@@ -992,7 +994,7 @@ if [ "apply_system_tweaks" == "$1" ]; then
 		echo "90" > /proc/sys/vm/dirty_ratio
 		echo "500" > /proc/sys/vm/dirty_writeback_centisecs
 		echo "4096" > /proc/sys/vm/min_free_kbytes
-		echo "60" > /proc/sys/vm/swappiness
+		echo "130" > /proc/sys/vm/swappiness
 		echo "10" > /proc/sys/vm/vfs_cache_pressure
 		echo "3" > /proc/sys/vm/drop_caches
 		busybox sleep 0.5s
@@ -1018,7 +1020,7 @@ if [ "apply_system_tweaks" == "$1" ]; then
 		echo "10" > /proc/sys/vm/dirty_ratio
 		echo "100" > /proc/sys/vm/dirty_writeback_centisecs
 		echo "8192" > /proc/sys/vm/min_free_kbytes
-		echo "70" > /proc/sys/vm/swappiness
+		echo "150" > /proc/sys/vm/swappiness
 		echo "500" > /proc/sys/vm/vfs_cache_pressure
 		echo "0" > /proc/sys/vm/drop_caches
 		busybox sleep 0.5s
@@ -1075,6 +1077,10 @@ if [ "apply_survival_script" == "$1" ]; then
 fi
 
 if [ "apply_zram" == "$1" ]; then
+
+# AP: no zRam in this kernel currently, so disable that !!!
+	exit 0
+	
 	if [ "1" == "$2" ]; then
 		if [ "1" == "$3" ]; then
 			busybox swapoff /dev/block/zram0

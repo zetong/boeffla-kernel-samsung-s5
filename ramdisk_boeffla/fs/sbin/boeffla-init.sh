@@ -162,6 +162,10 @@
 		echo $(date) Startup configuration applied  >> $BOEFFLA_LOGFILE
 	else
 		echo $(date) "No startup configuration found"  >> $BOEFFLA_LOGFILE
+		
+		# If not, apply default Boeffla-Kernel vnswap of 1300 MB
+		/res/bc/bccontroller.sh apply_zram 1 1 1363148800
+		echo $(date) Boeffla default vnswap activated >> $BOEFFLA_LOGFILE
 	fi
 	
 # Turn off debugging for certain modules

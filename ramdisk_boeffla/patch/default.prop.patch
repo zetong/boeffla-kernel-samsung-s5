@@ -1,19 +1,17 @@
-From 92b305ec6a1b5ded49da577cb5eca0fbf95291b1 Mon Sep 17 00:00:00 2001
+From 926718ddf55ad252e9ff4be77d3055461b129345 Mon Sep 17 00:00:00 2001
 From: andip71 <andreasp@gmx.de>
-Date: Wed, 4 Mar 2015 16:44:09 +0100
+Date: Wed, 25 Mar 2015 06:14:59 +0100
 Subject: [PATCH] 2
 
 ---
- default.prop   | 12 +++++++-----
- init.rc        | 19 ++++++++++++++++---
- init.target.rc |  2 ++
- 3 files changed, 25 insertions(+), 8 deletions(-)
+ default.prop | 14 +++++++++-----
+ 1 file changed, 9 insertions(+), 5 deletions(-)
 
 diff --git a/default.prop b/default.prop
-index 2a12f82..9e449eb 100644
+index 2a12f82..b4e4846 100644
 --- a/default.prop
 +++ b/default.prop
-@@ -1,16 +1,18 @@
+@@ -1,18 +1,22 @@
  #
  # ADDITIONAL_DEFAULT_PROPERTIES
  #
@@ -37,7 +35,10 @@ index 2a12f82..9e449eb 100644
  dalvik.vm.dex2oat-Xms=64m
  dalvik.vm.dex2oat-Xmx=512m
  dalvik.vm.image-dex2oat-Xms=64m
-
+ dalvik.vm.image-dex2oat-Xmx=64m
+ ro.dalvik.vm.native.bridge=0
++ro.config.tima=0
++ro.config.knox=0
 -- 
 1.9.1
 

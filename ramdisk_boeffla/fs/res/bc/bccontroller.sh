@@ -733,6 +733,7 @@ if [ "apply_governor_profile" == "$1" ]; then
 	fi
 
 	if [ "interactive - standard" == "$2" ]; then
+		echo "0" > /sys/devices/system/cpu/cpufreq/interactive/bk_locked 
 		echo "20000 1400000:40000 1700000:20000" > /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay 
 		echo "0" > /sys/devices/system/cpu/cpufreq/interactive/boost 
 		echo "" > /sys/devices/system/cpu/cpufreq/interactive/boostpulse 
@@ -748,12 +749,14 @@ if [ "apply_governor_profile" == "$1" ]; then
 		echo "20000" > /sys/devices/system/cpu/cpufreq/interactive/timer_slack 
 		echo "1190400" > /sys/devices/system/cpu/cpufreq/interactive/up_threshold_any_cpu_freq 
 		echo "50" > /sys/devices/system/cpu/cpufreq/interactive/up_threshold_any_cpu_load 
+		echo "1" > /sys/devices/system/cpu/cpufreq/interactive/bk_locked 
 
 		busybox sleep 0.5s
 		busybox sync
 	fi
 	
 	if [ "interactive - battery" == "$2" ]; then
+		echo "0" > /sys/devices/system/cpu/cpufreq/interactive/bk_locked 
 		echo "20000 1400000:40000 1700000:20000" > /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay 
 		echo "0" > /sys/devices/system/cpu/cpufreq/interactive/boost 
 		echo "" > /sys/devices/system/cpu/cpufreq/interactive/boostpulse 
@@ -769,12 +772,14 @@ if [ "apply_governor_profile" == "$1" ]; then
 		echo "20000" > /sys/devices/system/cpu/cpufreq/interactive/timer_slack 
 		echo "1190400" > /sys/devices/system/cpu/cpufreq/interactive/up_threshold_any_cpu_freq 
 		echo "50" > /sys/devices/system/cpu/cpufreq/interactive/up_threshold_any_cpu_load 
+		echo "1" > /sys/devices/system/cpu/cpufreq/interactive/bk_locked 
 
 		busybox sleep 0.5s
 		busybox sync
 	fi
 
 	if [ "interactive - battery extreme" == "$2" ]; then
+		echo "0" > /sys/devices/system/cpu/cpufreq/interactive/bk_locked 
 		echo "20000 1400000:40000 1700000:20000" > /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay 
 		echo "0" > /sys/devices/system/cpu/cpufreq/interactive/boost 
 		echo "" > /sys/devices/system/cpu/cpufreq/interactive/boostpulse 
@@ -790,12 +795,14 @@ if [ "apply_governor_profile" == "$1" ]; then
 		echo "20000" > /sys/devices/system/cpu/cpufreq/interactive/timer_slack 
 		echo "1190400" > /sys/devices/system/cpu/cpufreq/interactive/up_threshold_any_cpu_freq 
 		echo "50" > /sys/devices/system/cpu/cpufreq/interactive/up_threshold_any_cpu_load 
+		echo "1" > /sys/devices/system/cpu/cpufreq/interactive/bk_locked 
 
 		busybox sleep 0.5s
 		busybox sync
 	fi
 
 	if [ "interactive - performance" == "$2" ]; then
+		echo "0" > /sys/devices/system/cpu/cpufreq/interactive/bk_locked 
 		echo "20000 1400000:40000 1700000:20000" > /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay 
 		echo "0" > /sys/devices/system/cpu/cpufreq/interactive/boost 
 		echo "" > /sys/devices/system/cpu/cpufreq/interactive/boostpulse 
@@ -811,6 +818,7 @@ if [ "apply_governor_profile" == "$1" ]; then
 		echo "20000" > /sys/devices/system/cpu/cpufreq/interactive/timer_slack 
 		echo "1190400" > /sys/devices/system/cpu/cpufreq/interactive/up_threshold_any_cpu_freq 
 		echo "50" > /sys/devices/system/cpu/cpufreq/interactive/up_threshold_any_cpu_load 
+		echo "1" > /sys/devices/system/cpu/cpufreq/interactive/bk_locked 
 
 		busybox sleep 0.5s
 		busybox sync

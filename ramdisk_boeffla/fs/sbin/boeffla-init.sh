@@ -27,6 +27,9 @@
 	FRANDOM_ENABLER="/data/.boeffla/enable-frandom"
 	PERMISSIVE_ENABLER="/data/.boeffla/enable-permissive"
 
+# execute setenforce to permissive (workaround as it is already permissive that time)
+	/system/bin/setenforce 0
+	
 # If not yet existing, create a boeffla-kernel-data folder on sdcard 
 # which is used for many purposes,
 # always set permissions and owners correctly for pathes and files

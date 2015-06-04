@@ -657,6 +657,7 @@ static int __dwc3_gadget_ep_enable(struct dwc3_ep *dep,
 		reg |= DWC3_DALEPENA_EP(dep->number);
 		dwc3_writel(dwc->regs, DWC3_DALEPENA, reg);
 
+		if (!usb_endpoint_xfer_isoc(desc))
 			return 0;
 
 		memset(&trb_link, 0, sizeof(trb_link));
